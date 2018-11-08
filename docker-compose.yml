@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    command: "--explicit_defaults_for_timestamp"
+    ports:
+      - "3307:3306"
+    volumes:
+      - bradenscale_mysql:/var/lib/mysql/data
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/bradenscale
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    links:
+      - db
+
+volumes:
+  bradenscale_mysql:

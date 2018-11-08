@@ -1,0 +1,40 @@
+
+
+
+<section class="hero is-fullheight is-primary">
+        <div class="hero-body">
+          <div class="container">
+            <div class="columns is-centered is-mobile">
+                <article class="card is-rounded">
+                  <div class="card-content">
+                    <h1 class="title">
+                      <img src="https://placeholdit.imgix.net/~text?txtsize=13&txt=150%C3%9750&w=150&h=50" alt="logo" width="200">
+                    </h1>
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                      <div class="control">
+                        <%= f.label :email %><br />
+                        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "input" %>
+                      </div>
+
+                      <div class="control">
+                        <%= f.label :password %><br />
+                        <%= f.password_field :password, autocomplete: "current-password", class: "input", placeholder: "Password" %>
+                      </div>
+
+                      <% if devise_mapping.rememberable? -%>
+                        <div class="control">
+                          <%= f.check_box :remember_me %>
+                          <%= f.label :remember_me %>
+                        </div>
+                      <% end -%>
+
+                      <div class="actions">
+                        <%= f.submit "Log in", class: "button is-primary is-medium is-fullwidth" %>
+                      </div>
+                    <% end %>
+                  </div>
+                </article>
+            </div>
+          </div>
+    </div>
+  </section>
