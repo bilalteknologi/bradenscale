@@ -1,10 +1,10 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_transaction, only: [:show, :edit, :update, :destroy, :export_pdf]
 
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.where(user_id: current_user.id)
   end
 
   # GET /transactions/1
@@ -15,6 +15,23 @@ class TransactionsController < ApplicationController
     @decision = Decision.where(["begin_value <= ?",@transaction.score]).where(["end_value >= ?", @transaction.score]).first
 
 
+  end
+
+  def export_pdf
+    
+    @subtransactions = Subtransaction.where(transaction_id: params[:id])
+
+    @decision = Decision.where(["begin_value <= ?",@transaction.score]).where(["end_value >= ?", @transaction.score]).first
+    
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "tes",
+        template: "transactions/export_pdf.html.erb",
+        layout: 'layouts/pdf.html',
+        locals: { transaction: @transaction, subtransaction: @subtransaction, decision: @decision }
+      end
+    end
   end
 
   # GET /transactions/new
@@ -34,6 +51,7 @@ class TransactionsController < ApplicationController
     @answer = Answer.where(id: params[:answer_id])
     @transaction = Transaction.new(custom_transaction_params)
     @transaction.score = @answer.sum(:value)
+    @transaction.user_id = current_user.id
 
     respond_to do |format|
       if @transaction.save

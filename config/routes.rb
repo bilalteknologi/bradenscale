@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   
   resources :decisions
-  resources :transactions
+
+  resources :transactions do
+    member do
+      get :export_pdf, :as => 'export_pdf'
+    end
+  end
   # resources :questions
   # resources :answers
   devise_for :users, :skip => [:registrations, :recoverable]
