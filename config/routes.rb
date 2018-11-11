@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  resources :transactions
   resources :decisions
+  resources :transactions
   # resources :questions
   # resources :answers
   devise_for :users, :skip => [:registrations, :recoverable]

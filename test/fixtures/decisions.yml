@@ -4,8 +4,10 @@ one:
   begin_value: 1
   end_value: 1
   decision: 
+  title: MyString
 
 two:
   begin_value: 1
   end_value: 1
   decision: 
+  title: MyString

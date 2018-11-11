@@ -4,6 +4,7 @@ class CreateDecisions < ActiveRecord::Migration[5.2]
       t.integer :begin_value
       t.integer :end_value
       t.longtext :decision
+      t.string :title
 
       t.timestamps
     end

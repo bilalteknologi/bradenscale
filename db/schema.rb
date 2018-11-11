@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_11_052038) do
+ActiveRecord::Schema.define(version: 2018_11_11_123944) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "answer", limit: 4294967295
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2018_11_11_052038) do
     t.integer "begin_value"
     t.integer "end_value"
     t.text "decision", limit: 4294967295
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

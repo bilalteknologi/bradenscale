@@ -17,7 +17,7 @@ class DecisionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create decision" do
     assert_difference('Decision.count') do
-      post decisions_url, params: { decision: { begin_value: @decision.begin_value, decision: @decision.decision, end_value: @decision.end_value } }
+      post decisions_url, params: { decision: { begin_value: @decision.begin_value, decision: @decision.decision, end_value: @decision.end_value, title: @decision.title } }
     end
 
     assert_redirected_to decision_url(Decision.last)
@@ -34,7 +34,7 @@ class DecisionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update decision" do
-    patch decision_url(@decision), params: { decision: { begin_value: @decision.begin_value, decision: @decision.decision, end_value: @decision.end_value } }
+    patch decision_url(@decision), params: { decision: { begin_value: @decision.begin_value, decision: @decision.decision, end_value: @decision.end_value, title: @decision.title } }
     assert_redirected_to decision_url(@decision)
   end
 

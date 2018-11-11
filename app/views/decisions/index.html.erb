@@ -8,6 +8,7 @@
       <th>Begin value</th>
       <th>End value</th>
       <th>Decision</th>
+      <th>Title</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= decision.begin_value %></td>
         <td><%= decision.end_value %></td>
         <td><%= decision.decision %></td>
+        <td><%= decision.title %></td>
         <td><%= link_to 'Show', decision %></td>
         <td><%= link_to 'Edit', edit_decision_path(decision) %></td>
         <td><%= link_to 'Destroy', decision, method: :delete, data: { confirm: 'Are you sure?' } %></td>

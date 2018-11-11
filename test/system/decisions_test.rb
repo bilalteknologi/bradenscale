@@ -17,6 +17,7 @@ class DecisionsTest < ApplicationSystemTestCase
     fill_in "Begin Value", with: @decision.begin_value
     fill_in "Decision", with: @decision.decision
     fill_in "End Value", with: @decision.end_value
+    fill_in "Title", with: @decision.title
     click_on "Create Decision"
 
     assert_text "Decision was successfully created"
@@ -30,6 +31,7 @@ class DecisionsTest < ApplicationSystemTestCase
     fill_in "Begin Value", with: @decision.begin_value
     fill_in "Decision", with: @decision.decision
     fill_in "End Value", with: @decision.end_value
+    fill_in "Title", with: @decision.title
     click_on "Update Decision"
 
     assert_text "Decision was successfully updated"
