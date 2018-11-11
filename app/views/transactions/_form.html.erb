@@ -1,0 +1,65 @@
+<%= form_with(model: transaction, local: true) do |form| %>
+  <% if transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+      <% transaction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :checkin_date %>
+    <%= form.date_select :checkin_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.text_field :gender %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ruangan %>
+    <%= form.text_field :ruangan %>
+  </div>
+
+  <div class="field">
+    <%= form.label :doctor %>
+    <%= form.text_field :doctor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :medic_record_number %>
+    <%= form.text_field :medic_record_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bed_number %>
+    <%= form.text_field :bed_number %>
+  </div>
+
+  <h1>Question</h1>
+
+  <% @questions.each do |question| %>
+    <label><%= question.question %></label>
+      <%= select_tag "answer_id[]", options_from_collection_for_select(question.answer.collect,:id,:answer), {:class=>'form-control', :prompt => 'Choose Answer'} %> </br>
+    </br>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

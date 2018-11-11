@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  begin_value: 1
+  end_value: 1
+  decision: 
+
+two:
+  begin_value: 1
+  end_value: 1
+  decision: 

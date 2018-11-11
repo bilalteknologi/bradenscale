@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Begin value:</strong>
+  <%= @decision.begin_value %>
+</p>
+
+<p>
+  <strong>End value:</strong>
+  <%= @decision.end_value %>
+</p>
+
+<p>
+  <strong>Decision:</strong>
+  <%= @decision.decision %>
+</p>
+
+<%= link_to 'Edit', edit_decision_path(@decision) %> |
+<%= link_to 'Back', decisions_path %>

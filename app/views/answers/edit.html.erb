@@ -1,6 +1,31 @@
 <h1>Editing Answer</h1>
 
-<%= render 'form', answer: @answer %>
+<%= form_for @answer, :url => question_answer_path(@question), :method => :put do |form| %>
+  <% if @answer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
 
-<%= link_to 'Show', @answer %> |
-<%= link_to 'Back', answers_path %>
+      <ul>
+      <% @answer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :answer %>
+    <%= form.text_field :answer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.number_field :value %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', question_answers_path(@question) %>

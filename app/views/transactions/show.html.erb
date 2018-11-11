@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @transaction.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @transaction.age %>
+</p>
+
+<p>
+  <strong>Checkin date:</strong>
+  <%= @transaction.checkin_date %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @transaction.gender %>
+</p>
+
+<p>
+  <strong>Ruangan:</strong>
+  <%= @transaction.ruangan %>
+</p>
+
+<p>
+  <strong>Doctor:</strong>
+  <%= @transaction.doctor %>
+</p>
+
+<p>
+  <strong>Medic record number:</strong>
+  <%= @transaction.medic_record_number %>
+</p>
+
+<p>
+  <strong>Bed number:</strong>
+  <%= @transaction.bed_number %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @transaction.score %>
+</p>
+
+<% @subtransactions.each do |subtransaction| %>
+  <%= subtransaction.answer.question.question %>
+  <%= subtransaction.answer.answer %></br>
+<% end %>
+
+<%= @decision.decision %>
+</br>
+
+<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
+<%= link_to 'Back', transactions_path %>

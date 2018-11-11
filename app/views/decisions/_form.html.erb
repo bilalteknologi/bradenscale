@@ -1,0 +1,32 @@
+<%= form_with(model: decision, local: true) do |form| %>
+  <% if decision.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(decision.errors.count, "error") %> prohibited this decision from being saved:</h2>
+
+      <ul>
+      <% decision.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :begin_value %>
+    <%= form.number_field :begin_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_value %>
+    <%= form.number_field :end_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :decision %>
+    <%= form.text_field :decision %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

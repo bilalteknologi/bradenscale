@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  age: 1
+  checkin_date: 2018-11-11
+  gender: MyString
+  ruangan: MyString
+  doctor: MyString
+  medic_record_number: MyString
+  bed_number: MyString
+  integer: 
+
+two:
+  name: MyString
+  age: 1
+  checkin_date: 2018-11-11
+  gender: MyString
+  ruangan: MyString
+  doctor: MyString
+  medic_record_number: MyString
+  bed_number: MyString
+  integer: 

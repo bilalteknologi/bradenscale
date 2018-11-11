@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
-  resources :questions
-  resources :answers
+  resources :transactions
+  resources :decisions
+  # resources :questions
+  # resources :answers
   devise_for :users, :skip => [:registrations, :recoverable]
   devise_scope :user do
     get "/login" => "devise/sessions#new", :as => :new_user_session_path
@@ -10,5 +12,8 @@ Rails.application.routes.draw do
     delete "/logout" => "devise/sessions#destroy", :as => :destroy_user_session_path
   end
 
+  resources :questions do
+    resources :answers, only: [:create, :destroy, :edit, :update]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
