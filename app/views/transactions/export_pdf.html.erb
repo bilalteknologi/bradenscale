@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @transaction.name %>
@@ -53,5 +51,3 @@
 <%= @decision.decision %>
 </br>
 
-<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
-<%= link_to 'Back', transactions_path %> | <%= link_to 'Print', export_pdf_transaction_path(@transaction, :format => :pdf) %>
