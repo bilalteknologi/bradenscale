@@ -1,57 +1,73 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @transaction.name %>
-</p>
+<%= render "layouts/nav" %>
 
-<p>
-  <strong>Age:</strong>
-  <%= @transaction.age %>
-</p>
-
-<p>
-  <strong>Checkin date:</strong>
-  <%= @transaction.checkin_date %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @transaction.gender %>
-</p>
-
-<p>
-  <strong>Ruangan:</strong>
-  <%= @transaction.ruangan %>
-</p>
-
-<p>
-  <strong>Doctor:</strong>
-  <%= @transaction.doctor %>
-</p>
-
-<p>
-  <strong>Medic record number:</strong>
-  <%= @transaction.medic_record_number %>
-</p>
-
-<p>
-  <strong>Bed number:</strong>
-  <%= @transaction.bed_number %>
-</p>
-
-<p>
-  <strong>Score:</strong>
-  <%= @transaction.score %>
-</p>
-
-<% @subtransactions.each do |subtransaction| %>
-  <%= subtransaction.answer.question.question %>
-  <%= subtransaction.answer.answer %></br>
+<% if notice!=nil %>
+<div class="column is-12 ">
+    <div class="notification is-warning">
+      <button class="delete"></button>
+      <%= notice %>
+    </div>
+</div>
 <% end %>
 
-<%= @decision.decision %>
-</br>
+<div class="column is-12 ">    
+    <div class="box cta">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4"><%= @transaction.name %>
+              <% if @transaction.gender=="Laki-Laki" || @transaction.gender=="Pria" %>
+                <span class="icon"><i class="fa fa-mars" aria-hidden="true"></i></span> <%= @transaction.age%> y.o
+              <% else %>
+                <span class="icon"><i class="fa fa-venus" aria-hidden="true"></i></span> <%= @transaction.age%> y.o
+              <% end %>
+            </p>
+            <p class="subtitle is-6"><span class="icon"><i class="fa fa-file-o" aria-hidden="true"></i>
+              </span><%= @transaction.medic_record_number %> /
+              <span class="icon"><i class="fa fa-sign-in" aria-hidden="true"></i></span> <%= @transaction.ruangan %> / 
+              <span class="icon"><i class="fa fa-bed" aria-hidden="true"></i></span> <%= @transaction.bed_number %><br> 
+              <span class="icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span><%= @transaction.created_at.strftime("%H:%M:%S") %>
+              <span class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></span><%= @transaction.created_at.strftime("%d/%b/%Y") %><br>
+              <span class="icon"><i class="fa fa-user-md" aria-hidden="true"></i></span><%= @transaction.doctor %>
+              </p>
+          </div>
+        </div>
+        <hr>
+        <div class="content">
+          <span class="subtitle is-4 has-text-link "><%= @decision.decision %> (<%= @decision.begin_value %> - <%= @decision.end_value %>)</span><br>
+            <%= @decision.decision.html_safe %>
+          <br>
+        </div>
+        <hr>
+        <div class="content">
+          <span class="subtitle is-4 has-text-link">Question & Answer</span><br>
+            <%= @decision.decision.html_safe %>
+            <% @subtransactions.each do |subtransaction| %>
+              <%= subtransaction.answer.question.question %><span class="icon"><i class="fa fa-question-circle-o" aria-hidden="true"></i></span> <br>
+                <li><%= subtransaction.answer.answer %> (<%= subtransaction.answer.value %>)</li>
+            <% end %>
+          <br>
+        </div>
 
-<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
-<%= link_to 'Back', transactions_path %> | <%= link_to 'Print', export_pdf_transaction_path(@transaction, :format => :pdf) %>
+      </div>
+
+      <footer class="card-footer">
+        <div class="card-footer-item">
+          <div class="columns">
+            <div class="column is-12">
+              <div class="buttons is-left">
+                <%= link_to 'Back', transactions_path, class: "button is-link" %>
+                <%= link_to export_pdf_transaction_path(@transaction, :format => :pdf), class: "button is-danger" do %>
+                  <span class="icon"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span><span></span> Export
+                <% end %>
+                <%= link_to 'Destroy', @transaction, method: :delete,class: "button is-warning", data: { confirm: 'Are you sure?' } %>
+              </div>
+            </div>
+            
+          </div>
+            
+        </div>
+      </footer>
+
+    </div>
+</div>

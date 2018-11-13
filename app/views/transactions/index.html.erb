@@ -1,5 +1,13 @@
 <%= render "layouts/nav" %>
-<p id="notice"><%= notice %></p>
+
+<% if notice!=nil %>
+<div class="column is-12 ">
+    <div class="notification is-warning">
+      <button class="delete"></button>
+      <%= notice %>
+    </div>
+</div>
+<% end %>
 
 <div class="column is-12 ">
   <div class="box cta">
@@ -7,7 +15,7 @@
         <div class="field is-grouped is-grouped-multiline">
           <div class="control">
             <%= link_to new_transaction_path ,class: "button is-link is-medium" do%>
-              <span class="icon"><i class="fa fa-plus" aria-hidden="true"></i></span><span></span>Transaksi</a>
+              <span class="icon"><i class="fa fa-plus" aria-hidden="true"></i></span><span></span>Screening</a>
             <% end %>
           </div>
         </div>
@@ -21,68 +29,50 @@
       <div class="card-content">
         <div class="media">
           <div class="media-content">
-            <p class="title is-4"><%= transaction.name %></p>
-            <p class="subtitle is-6"><%= transaction.medic_record_number %> / <%= transaction.ruangan %> / <%= transaction.bed_number %></p>
+            <p class="title is-4"><%= transaction.name %>
+              <% if transaction.gender=="Laki-Laki" || transaction.gender=="Pria" %>
+                <span class="icon"><i class="fa fa-mars" aria-hidden="true"></i></span> <small><%= transaction.age%> y.o</small>
+              <% else %>
+                <span class="icon"><i class="fa fa-venus" aria-hidden="true"></i></span> <small><%= transaction.age%> y.o</small>
+              <% end %>
+            </p>
+            <p class="subtitle is-6"><span class="icon"><i class="fa fa-file-o" aria-hidden="true"></i></span><%= transaction.medic_record_number %> / <span class="icon"><i class="fa fa-sign-in" aria-hidden="true"></i></span> <%= transaction.ruangan %> / <span class="icon"><i class="fa fa-bed" aria-hidden="true"></i></span> <%= transaction.bed_number %><br> <span class="icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span><%= transaction.created_at.strftime("%H:%M:%S") %><span class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></span><%= transaction.created_at.strftime("%d/%b/%Y") %></p>
           </div>
         </div>
-
+        <hr>
         <div class="content">
-          <span class="subtitle is-4 has-text-link">Header</span><br>
-          Interfensi Resiko
+          <% @decision = Decision.where(["begin_value <= ?",transaction.score]).where(["end_value >= ?", transaction.score]).first %>
+          <span class="subtitle is-4 has-text-link"><%= @decision.decision %></span><br>
+            <%= @decision.decision.html_safe %>
           <br>
-          <time datetime="d-m-Y"><%= transaction.checkin_date %></time>
+          <span class="icon"><i class="fa fa-user-md" aria-hidden="true"></i></span><%= transaction.doctor %>
         </div>
       </div>
 
       <footer class="card-footer">
+        <div class="card-footer-item">
+          <div class="columns">
+            <div class="column is-12">
+              <div class="buttons is-left">
+                <%= link_to export_pdf_transaction_path( transaction, :format => :pdf), class: "button is-danger" do %>
+                  <span class="icon"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span><span></span> Export
+                <% end %>
+                <%= link_to 'Destroy', transaction, method: :delete,class: "button is-warning", data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Show', transaction,class: "button is-primary" %>
+              </div>
+            </div>
+            
+          </div>
+            
+        </div>
       </footer>
 
     </div>
   <% end %>
+
+  <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+  <%= will_paginate @posts %>
+
+  </nav>
 </div>
 
-
-
-
-<h1>Transactions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Checkin date</th>
-      <th>Gender</th>
-      <th>Ruangan</th>
-      <th>Doctor</th>
-      <th>Medic record number</th>
-      <th>Bed number</th>
-      <th>Score</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @transactions.each do |transaction| %>
-      <tr>
-        <td><%= transaction.name %></td>
-        <td><%= transaction.age %></td>
-        <td><%= transaction.checkin_date %></td>
-        <td><%= transaction.gender %></td>
-        <td><%= transaction.ruangan %></td>
-        <td><%= transaction.doctor %></td>
-        <td><%= transaction.medic_record_number %></td>
-        <td><%= transaction.bed_number %></td>
-        <td><%= transaction.score %></td>
-        <td><%= link_to 'Show', transaction %></td>
-        <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
-        <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Transaction', new_transaction_path %>
-<%= link_to('Logout', destroy_user_session_path, method: :delete) %> 

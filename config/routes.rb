@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :decisions
 
-  resources :transactions do
+  resources :transactions, only: [:create,:new,:destroy,:show,:index] do
     member do
       get :export_pdf, :as => 'export_pdf'
     end
