@@ -57,7 +57,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(custom_transaction_params)
     @transaction.score = @answer.sum(:value)
     @transaction.user_id = current_user.id
-    @transaction.gender = params[:gender]
+    @transaction.gender = params[:gender][:gender]
 
     respond_to do |format|
       if @transaction.save
