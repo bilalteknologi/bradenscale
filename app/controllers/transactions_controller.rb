@@ -5,9 +5,9 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     if current_user.admin?
-      @transactions = Transaction.all
+      @transactions = Transaction.all.paginate(:page => params[:page], :per_page => 2)
     else
-      @transactions = Transaction.where(user_id: current_user.id)
+      @transactions = Transaction.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 2)
     end
   end
 
@@ -29,7 +29,6 @@ class TransactionsController < ApplicationController
     @decision = Decision.where(["begin_value <= ?",@transaction.score]).where(["end_value >= ?", @transaction.score]).first
     
     respond_to do |format|
-      format.html
       format.pdf do
         render pdf: "tes",
         template: "transactions/export_pdf.html.erb",
@@ -58,6 +57,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(custom_transaction_params)
     @transaction.score = @answer.sum(:value)
     @transaction.user_id = current_user.id
+    @transaction.gender = params[:gender]
 
     respond_to do |format|
       if @transaction.save
@@ -116,6 +116,6 @@ class TransactionsController < ApplicationController
 
     def custom_transaction_params
 
-      params.require(:transaction).permit(:name, :age, :checkin_date, :gender, :ruangan, :doctor, :medic_record_number, :bed_number)
+      params.require(:transaction).permit(:name, :age, :checkin_date, :ruangan, :doctor, :medic_record_number, :bed_number)
     end
 end

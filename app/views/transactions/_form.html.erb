@@ -29,13 +29,15 @@
 
       <div class="field">
         <div class="control">
-          <%= form.date_select :checkin_date, class: "input", placeholder: "Nama" %>
+            <%= form.date_select :checkin_date, start_year: 1945, placeholder: "Nama", :order => [:day, :month, :year], class:"select" %>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-          <%= form.text_field :gender, class: "input", placeholder: "Jenis Kelamin" %>
+          <div class="select is-fullwidth">
+            <%= select("gender","gender",options_for_select([["Laki-Laki","Laki-Laki"],["Perempuan","Perempuan"]], :selected => form.object.gender)) %> </br>
+          </div>
         </div>
       </div>
 
@@ -72,7 +74,7 @@
         <div class="field">
           <label class="label"><%= question.question%></label>
           <div class="control">
-            <div class="select">
+            <div class="select is-fullwidth">
               <%= select_tag "answer_id[]", options_from_collection_for_select(question.answer.collect,:id,:answer) %>
             </div>
           </div>
@@ -81,13 +83,18 @@
 
       <footer class="card-footer">
         <div class="card-footer-item">
-          <%= link_to transactions_path ,class: "button is-danger is-fullwidth" do%>
-            <span class="icon"><i class="fa fa-caret-left" aria-hidden="true"></i></span><span></span>Back</a>
-          <% end %>
+          <div class="columns">
+            <div class="column is-12">
+              <div class="buttons is-left">
+                <%= link_to transactions_path ,class: "button is-danger" do%>
+                    <span class="icon"><i class="fa fa-caret-left" aria-hidden="true"></i></span><span></span>Back</a>
+                <% end %>
+                <%= form.submit :class => "button is-link"%>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-footer-item">
-          <%= form.submit :class => "button is-link is-fullwidth"%>
-        </div>
+       
             
       </footer>
     </div>
