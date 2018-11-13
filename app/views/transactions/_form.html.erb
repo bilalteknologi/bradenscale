@@ -28,7 +28,8 @@
 
   <div class="field">
     <%= form.label :gender %>
-    <%= form.text_field :gender %>
+    <%= select("gender","gender",options_for_select([["Laki-Laki","Laki-Laki"],["Perempuan","Perempuan"]], :selected => form.object.gender)) %> </br>
+
   </div>
 
   <div class="field">

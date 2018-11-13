@@ -33,6 +33,7 @@ gem 'devise'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'pundit'
+gem "ckeditor"
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

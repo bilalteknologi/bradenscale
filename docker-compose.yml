@@ -6,7 +6,7 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - bradenscale_mysql:/var/lib/mysql/data
+      # - bradenscale_mysql:/var/lib/mysql/data
       - .my.cnf:/etc/mysql/conf.d
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
