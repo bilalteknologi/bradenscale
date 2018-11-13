@@ -29,8 +29,8 @@
     <%= form.password_field :password, autofocus: true, autocomplete: "new-password" %>
   </div>
 
-  <label>Level</label></br>
-  <%= select("level","level",options_for_select([["Admin","1"],["User","2"]], :selected => form.object.level), {prompt: 'Pilih Tipe'}) %> </br>
+  <label>Level</label>
+  <%= select("level","level",options_for_select([["Admin","1"],["User","2"]], :selected => form.object.level)) %> </br>
 
 
   <div class="actions">

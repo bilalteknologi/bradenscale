@@ -1,10 +1,14 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy, :export_pdf]
+  before_action :set_transaction, only: [:show, :destroy, :export_pdf]
 
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.where(user_id: current_user.id)
+    if current_user.admin?
+      @transactions = Transaction.all
+    else
+      @transactions = Transaction.where(user_id: current_user.id)
+    end
   end
 
   # GET /transactions/1
@@ -13,6 +17,7 @@ class TransactionsController < ApplicationController
     @subtransactions = Subtransaction.where(transaction_id: params[:id])
 
     @decision = Decision.where(["begin_value <= ?",@transaction.score]).where(["end_value >= ?", @transaction.score]).first
+    authorize @transaction
 
 
   end
@@ -42,6 +47,7 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/1/edit
   def edit
+    authorize @transaction
   end
 
   # POST /transactions
@@ -88,6 +94,8 @@ class TransactionsController < ApplicationController
   # DELETE /transactions/1
   # DELETE /transactions/1.json
   def destroy
+    authorize @transaction
+
     @transaction.destroy
     respond_to do |format|
       format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }

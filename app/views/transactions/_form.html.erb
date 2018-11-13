@@ -38,6 +38,11 @@
           <%= form.text_field :gender, class: "input", placeholder: "Jenis Kelamin" %>
         </div>
       </div>
+  <div class="field">
+    <%= form.label :gender %>
+    <%= select("gender","gender",options_for_select([["Laki-Laki","Laki-Laki"],["Perempuan","Perempuan"]], :selected => form.object.gender)) %> </br>
+
+  </div>
 
       <div class="field">
         <div class="control">

@@ -28,6 +28,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    authorize @question
   end
 
   # POST /questions
