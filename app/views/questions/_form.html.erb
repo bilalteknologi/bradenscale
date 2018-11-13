@@ -1,3 +1,6 @@
+<%= render "layouts/nav" %>
+<p id="notice"><%= notice %></p>
+
 <%= form_with(model: question, local: true) do |form| %>
   <% if question.errors.any? %>
     <div id="error_explanation">
@@ -11,12 +14,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :question %>
-    <%= form.text_field :question %>
-  </div>
+  <div class="column is-12">
+    <div class="box cta">
+      <div class="field">
+        <div class="control">
+          <%= form.text_field :question, class: "input", placeholder: "Pertanyaan" %>
+        </div>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
+      <footer class="card-footer">
+        <div class="card-footer-item">
+          <div class="columns">
+            <div class="column is-12">
+              <div class="buttons is-center">
+                <%= form.submit :class => "button is-link"%>
+                
+                <%= link_to @question ,class: "button is-success" do%>
+                    Answer
+                <% end %>
+                
+                <%= link_to questions_path ,class: "button is-danger" do%>
+                  Back
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   </div>
 <% end %>
+
+
