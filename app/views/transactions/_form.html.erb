@@ -1,8 +1,10 @@
+<%= render "layouts/nav" %>
+<p id="notice"><%= notice %></p>
+
 <%= form_with(model: transaction, local: true) do |form| %>
   <% if transaction.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
-
       <ul>
       <% transaction.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,55 +13,74 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="column is-12">
+    <div class="box cta">
+      <div class="field">
+        <div class="control">
+          <%= form.text_field :name, class: "input", placeholder: "Nama" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :age %>
-    <%= form.number_field :age %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <%= form.number_field :age, class: "input", placeholder: "Umur" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :checkin_date %>
-    <%= form.date_select :checkin_date %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <%= form.date_select :checkin_date, class: "input", placeholder: "Nama" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :gender %>
-    <%= form.text_field :gender %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <%= form.text_field :gender, class: "input", placeholder: "Jenis Kelamin" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :ruangan %>
-    <%= form.text_field :ruangan %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <%= form.text_field :ruangan, class: "input", placeholder: "Ruangan" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :doctor %>
-    <%= form.text_field :doctor %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <%= form.text_field :doctor, class: "input", placeholder: "Dokter" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :medic_record_number %>
-    <%= form.text_field :medic_record_number %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <%= form.text_field :medic_record_number, class: "input", placeholder: "Nomor Rekam Medik" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :bed_number %>
-    <%= form.text_field :bed_number %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <%= form.text_field :bed_number, class: "input", placeholder: "Nomor Kasur" %>
+        </div>
+      </div>
+      
+      <% @questions.each do |question| %>
+        <div class="field">
+          <label class="label"><%= question.question%></label>
+          <div class="control">
+            <div class="select">
+              <%= select_tag "answer_id[]", options_from_collection_for_select(question.answer.collect,:id,:answer) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
 
-  <h1>Question</h1>
-
-  <% @questions.each do |question| %>
-    <label><%= question.question %></label>
-      <%= select_tag "answer_id[]", options_from_collection_for_select(question.answer.collect,:id,:answer), {:class=>'form-control', :prompt => 'Choose Answer'} %> </br>
-    </br>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
+      <footer class="card-footer">
+        <div class="card-footer-item">
+        <%= form.submit :class => "button is-link"%>
+        </div>
+      </footer>
+    </div>
   </div>
 <% end %>
+
+

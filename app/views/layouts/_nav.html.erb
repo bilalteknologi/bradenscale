@@ -1,8 +1,12 @@
-<nav class="navbar is-success has-shadow">
+<nav class="navbar is-primary has-shadow">
   <div class="navbar-brand">
     <a class="navbar-item">
-      <img src="apple-logo.png" alt="logo" />
+      <img src="https://lh3.googleusercontent.com/-2MQW9HIaoe8/W5EFXzNdnmI/AAAAAAAAAAo/NwdlS41KA70OkT4Ugc3FbZPLEyJzerTAQCEwYBhgL/w140-h140-p/WhatsApp%2BImage%2B2018-07-30%2Bat%2B00.12.06.jpeg" alt="logo" />
     </a>
+    <a class="navbar-item">
+      <h3 class="title has-text-grey">Bilal Teknologi</h3>
+    </a>
+    
     <div for="menu-toggle" class="navbar-burger burger" style="color: $grey-dark">
       <span></span>
       <span></span>
@@ -31,43 +35,26 @@
             Report Bug
           </div>
         </a>
-        <a class="navbar-item">
+
+        <%= link_to destroy_user_session_path, method: :delete, class: "navbar-item" do %>
           <div>
             <span class="icon is-small">
               <i class="fa fa-sign-out" aria-hidden="true"></i>
             </span>
             Sign Out
           </div>
-        </a>
+        <% end %>
       </div>
     </div>
-    <a class="navbar-item is-hidden-tablet">
-      <span class="icon"><i class="fa fa-home"></i></span> Home
-    </a>
-    <a class="navbar-item is-hidden-tablet">
-      <span class="icon"><i class="fa fa-home"></i></span> Home
-    </a>
-    <a class="navbar-item is-hidden-tablet">
-      <span class="icon"><i class="fa fa-home"></i></span> Home
-    </a>
 
-    <a class="navbar-item is-hidden-tablet">
-      <div>
-        <span class="icon">
-          <i class="fa fa-user" aria-hidden="true"></i>
-        </span>
-        Profile
-      </div>
-    </a>
-
-    <a class="navbar-item is-hidden-tablet">
+    <%= link_to destroy_user_session_path, method: :delete, class: "navbar-item is-hidden-tablet" do %>
       <div>
         <span class="icon">
           <i class="fa fa-sign-out" aria-hidden="true"></i>        
         </span>
         Sign Out
       </div>
-    </a>
+    <% end %>
 
 
 
@@ -88,4 +75,4 @@
   });
 });
 </script>
-<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+
