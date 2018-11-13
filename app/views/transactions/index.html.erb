@@ -42,7 +42,7 @@
         <hr>
         <div class="content">
           <% @decision = Decision.where(["begin_value <= ?",transaction.score]).where(["end_value >= ?", transaction.score]).first %>
-          <span class="subtitle is-4 has-text-link"><%= @decision.decision %></span><br>
+          <span class="subtitle is-4 has-text-link"><%= @decision.title %></span><br>
             <%= @decision.decision.html_safe %>
           <br>
           <span class="icon"><i class="fa fa-user-md" aria-hidden="true"></i></span><%= transaction.doctor %>
