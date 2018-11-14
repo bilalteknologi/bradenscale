@@ -5,6 +5,8 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = Question.all
+    authorize @questions
+
   end
 
   # GET /questions/1
@@ -13,28 +15,39 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answers = Answer.where(question_id: params[:id])
     @answer = Answer.new
+    authorize @question
+
     
   end
 
   def show_with_answer
+    
     @answers = Answer.where(question_id: params[:id])
     @answer = Answer.new
   end
 
   # GET /questions/new
   def new
+
     @question = Question.new
+    authorize @question
+
   end
 
   # GET /questions/1/edit
   def edit
+
     authorize @question
   end
 
   # POST /questions
   # POST /questions.json
   def create
+
     @question = Question.new(question_params)
+
+    authorize @question
+
 
     respond_to do |format|
       if @question.save
@@ -64,6 +77,8 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
+    authorize @question
+
     @question.destroy
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }

@@ -9,6 +9,8 @@ class TransactionsController < ApplicationController
     else
       @transactions = Transaction.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 2)
     end
+    authorize @transactions
+
   end
 
   # GET /transactions/1
@@ -40,8 +42,12 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/new
   def new
+    authorize @transaction
+
     @transaction = Transaction.new
     @questions = Question.all
+    authorize @transaction
+
   end
 
   # GET /transactions/1/edit

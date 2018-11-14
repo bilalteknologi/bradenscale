@@ -1,10 +1,14 @@
 class TransactionPolicy < ApplicationPolicy
     def index?
-        user.id == record.useralias.id || user.admin? || user.user?
+        if user.admin?
+            user.admin? || user.user?
+
+        else
+            user.id == record.useralias.id || user.user?
+        end
     end
 
     def show?
-        # puts record.user.id
         user.id == record.useralias.id || user.admin? || user.user?
     end
 

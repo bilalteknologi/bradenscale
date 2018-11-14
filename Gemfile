@@ -35,6 +35,7 @@ gem 'wkhtmltopdf-binary'
 gem 'pundit'
 gem "ckeditor"
 gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bulma'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

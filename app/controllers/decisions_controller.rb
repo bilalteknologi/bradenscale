@@ -5,6 +5,8 @@ class DecisionsController < ApplicationController
   # GET /decisions.json
   def index
     @decisions = Decision.all
+    authorize @decisions
+
   end
 
   # GET /decisions/1
@@ -15,17 +17,20 @@ class DecisionsController < ApplicationController
   # GET /decisions/new
   def new
     @decision = Decision.new
+    authorize @decision
+
   end
 
   # GET /decisions/1/edit
   def edit
+    authorize @decision
   end
 
   # POST /decisions
   # POST /decisions.json
   def create
     @decision = Decision.new(decision_params)
-
+    authorize @decision
     respond_to do |format|
       if @decision.save
         format.html { redirect_to @decision, notice: 'Decision was successfully created.' }
@@ -54,6 +59,7 @@ class DecisionsController < ApplicationController
   # DELETE /decisions/1
   # DELETE /decisions/1.json
   def destroy
+    authorize @decision
     @decision.destroy
     respond_to do |format|
       format.html { redirect_to decisions_url, notice: 'Decision was successfully destroyed.' }
