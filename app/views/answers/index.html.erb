@@ -1,4 +1,11 @@
-<p id="notice"><%= notice %></p>
+<% if notice!=nil %>
+<div class="column is-12 ">
+    <div class="notification is-warning">
+      <button class="delete"></button>
+      <%= notice %>
+    </div>
+</div>
+<% end %>
 
 <h1>Answers</h1>
 

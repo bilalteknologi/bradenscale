@@ -1,3 +1,13 @@
+<%= render "layouts/nav" %>
+<% if notice!=nil %>
+<div class="column is-12 ">
+    <div class="notification is-warning">
+      <button class="delete"></button>
+      <%= notice %>
+    </div>
+</div>
+<% end %>
+
 <%= form_with(model: decision, local: true) do |form| %>
   <% if decision.errors.any? %>
     <div id="error_explanation">
@@ -11,27 +21,48 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :begin_value %>
-    <%= form.number_field :begin_value %>
-  </div>
+  <div class="column is-12">
+    <div class="box cta">
 
-  <div class="field">
-    <%= form.label :end_value %>
-    <%= form.number_field :end_value %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <%= form.text_field :title, class: "input", placeholder: "Title" %>
+        </div>
+      </div>
+      
+      <div class="field">
+        <div class="control">
+          <%= form.number_field :begin_value, class: "input", placeholder: "Begin Value" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :decision %>
-    <%= form.cktext_area :decision, rows: 10 %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <%= form.number_field :end_value, class: "input", placeholder: "End Value" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+      <div class="field">
+        <div class="control">
+          <%= form.cktext_area :decision, rows: 10, class: "input" %>
+        </div>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
+      <footer class="card-footer">
+        <div class="card-footer-item">
+          <div class="columns">
+            <div class="column is-12">
+              <div class="buttons is-center">
+                <%= form.submit :class => "button is-link"%>
+                
+                <%= link_to decisions_path ,class: "button is-danger" do%>
+                  Back
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   </div>
 <% end %>
