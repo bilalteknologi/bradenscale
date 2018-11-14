@@ -71,7 +71,9 @@
   <% end %>
 
   <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
-  <%= will_paginate @posts %>
+  <%= will_paginate @posts, renderer: BulmaPagination::Rails,
+      :previous_label => 'Previous',
+      :next_label => 'Next page' %>
 
   </nav>
 </div>

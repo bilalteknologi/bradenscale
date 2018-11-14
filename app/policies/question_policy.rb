@@ -2,6 +2,7 @@ class QuestionPolicy < ApplicationPolicy
 
     def index?
         user.admin?
+
     end
 
     def show?
