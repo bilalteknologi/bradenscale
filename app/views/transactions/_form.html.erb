@@ -17,56 +17,52 @@
     <div class="box cta">
       <div class="field">
         <div class="control">
-          <%= form.text_field :name, class: "input", placeholder: "Nama" %>
+          <%= form.text_field :name, class: "input", placeholder: "Name" %>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-          <%= form.number_field :age, class: "input", placeholder: "Umur" %>
+          <%= form.number_field :age, class: "input", placeholder: "Age" %>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-            <%= form.date_select :checkin_date, start_year: 1945, placeholder: "Nama", :order => [:day, :month, :year], class:"select" %>
+            <%= form.label :checkin_date %>
+            <%= form.date_select :checkin_date, start_year: 1945, :order => [:day, :month, :year], class:"select" %>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
           <div class="select is-fullwidth">
-            <%= select("gender","gender",options_for_select([["Laki-Laki","Laki-Laki"],["Perempuan","Perempuan"]], :selected => form.object.gender)) %> </br>
+            <%= select("gender","gender",options_for_select([["Male","Male"],["Female","Female"]], :selected => form.object.gender)) %> </br>
           </div>
         </div>
       </div>
 
       <div class="field">
-        <%= form.label :gender %>
-        <%= select("gender","gender",options_for_select([["Laki-Laki","Laki-Laki"],["Perempuan","Perempuan"]], :selected => form.object.gender)) %> </br>
-      </div>
-      
-      <div class="field">
         <div class="control">
-          <%= form.text_field :ruangan, class: "input", placeholder: "Ruangan" %>
+          <%= form.text_field :ruangan, class: "input", placeholder: "Room" %>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-          <%= form.text_field :doctor, class: "input", placeholder: "Dokter" %>
+          <%= form.text_field :doctor, class: "input", placeholder: "Docktor" %>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-          <%= form.text_field :medic_record_number, class: "input", placeholder: "Nomor Rekam Medik" %>
+          <%= form.text_field :medic_record_number, class: "input", placeholder: "Medic Record Number" %>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-          <%= form.text_field :bed_number, class: "input", placeholder: "Nomor Kasur" %>
+          <%= form.text_field :bed_number, class: "input", placeholder: "Bed Number" %>
         </div>
       </div>
       

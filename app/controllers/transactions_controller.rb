@@ -5,9 +5,9 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     if current_user.admin?
-      @transactions = Transaction.all.paginate(:page => params[:page], :per_page => 2)
+      @transactions = Transaction.all.paginate(:page => params[:page], :per_page => 15)
     else
-      @transactions = Transaction.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 2)
+      @transactions = Transaction.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 15)
     end
     authorize @transactions
 
@@ -42,7 +42,6 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/new
   def new
-    authorize @transaction
 
     @transaction = Transaction.new
     @questions = Question.all
