@@ -68,22 +68,15 @@
 
 <hr>
 <h2>Question & Answer</h2>
-
-<table style="width:70%;margin-right:auto;">
-  <tr>
-    <th style="width:70%;">
-    </th>
-    <th style="width:30%;">
-    </th>
-  </tr>
+<table style="width:500px;margin-right:auto;">
   <% @subtransactions.each do |subtransaction| %>
   <tr>
-    <td style="width:70%;">
+    <td style="width:300px;">
       <p>
         <strong><%= subtransaction.answer.question.question %>ajdnkajsndkasndkjasndkjasndkjasndkjasndkjasndkjnaskjdnaksjdnksakanskd</strong>
       </p>
     </td>
-    <td style="width:30%;">
+    <td style="width:200px;">
       <p>
         <%= subtransaction.answer.answer %> (<%= subtransaction.answer.value %>)</br>
       </p>
