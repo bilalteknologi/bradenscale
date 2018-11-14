@@ -74,5 +74,11 @@
 
   });
 });
+
+  window.setTimeout(function() {
+      $(".notification").fadeTo(100, 0).slideUp(100, function(){
+          $(this).remove(); 
+      });
+  }, 4000);
 </script>
 

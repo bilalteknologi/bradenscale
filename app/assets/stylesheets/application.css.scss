@@ -1,2 +1,8 @@
-@import "bulma";
 @import "font-awesome";
+
+.table__wrapper {
+    overflow-x: auto;
+}
+
+$table-row-hover-background-color : hsl(171, 100%, 41%);
+@import "bulma";

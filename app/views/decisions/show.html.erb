@@ -1,24 +1,39 @@
-<p id="notice"><%= notice %></p>
+<%= render "layouts/nav" %>
 
-<p>
-  <strong>Begin value:</strong>
-  <%= @decision.begin_value %>
-</p>
+<% if notice!=nil %>
+<div class="column is-12 ">
+    <div class="notification is-warning">
+      <button class="delete"></button>
+      <%= notice %>
+    </div>
+</div>
+<% end %>
 
-<p>
-  <strong>End value:</strong>
-  <%= @decision.end_value %>
-</p>
-
-<p>
-  <strong>Decision:</strong>
-  <%= @decision.decision.html_safe %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @decision.title %>
-</p>
-
-<%= link_to 'Edit', edit_decision_path(@decision) %> |
-<%= link_to 'Back', decisions_path %>
+<div class="column is-12">
+<div class="box">
+  <article class="media">
+    <div class="media-content media-justified">
+      <div class="content">
+        <p>
+          <strong><%= @decision.title %></strong> <small></small> <small>(<%= @decision.begin_value %>-<%= @decision.end_value %>)</small>
+          <br>
+          <%= @decision.decision.html_safe %>
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+            <%= link_to decisions_path, class: "icon is-small" do%>
+              <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            <% end %>
+        </div>
+        <div class="level-right">
+          <a class="level-item" aria-label="edit">
+            <%= link_to edit_decision_path(@decision), class: "icon is-small" do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            <% end %>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
