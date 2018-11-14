@@ -1,53 +1,119 @@
-<p>
-  <strong>Name:</strong>
-  <%= @transaction.name %>
-</p>
+<h1>Report Screening</h1>
+<h4><strong>Score :</strong> <%= @transaction.score %></h4>
+<hr>
 
-<p>
-  <strong>Age:</strong>
-  <%= @transaction.age %>
-</p>
+<table style="width:70%;margin-right:auto;">
+  <tr>
+    <th style="width:auto;"></th>
+    <th style="width:auto;"></th>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <strong>Name:</strong>
+        <%= @transaction.name %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Age:</strong>
+        <%= @transaction.age %>
+      </p>
+    </td>
+    <td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <strong>Gender:</strong>
+        <%= @transaction.gender %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Checkin date:</strong>
+        <%= @transaction.checkin_date %>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <strong>Room:</strong>
+        <%= @transaction.ruangan %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Doctor:</strong>
+        <%= @transaction.doctor %>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <strong>Medic record number:</strong>
+        <%= @transaction.medic_record_number %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Bed number:</strong>
+        <%= @transaction.bed_number %>
+      </p>
+    </td>
+  </tr>
+</table>
 
-<p>
-  <strong>Checkin date:</strong>
-  <%= @transaction.checkin_date %>
-</p>
+<hr>
+<h2>Question & Answer</h2>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @transaction.gender %>
-</p>
+<table style="width:70%;margin-right:auto;">
+  <tr>
+    <th style="width:70%;">
+    </th>
+    <th style="width:30%;">
+    </th>
+  </tr>
+  <% @subtransactions.each do |subtransaction| %>
+  <tr>
+    <td style="width:70%;">
+      <p>
+        <strong><%= subtransaction.answer.question.question %>ajdnkajsndkasndkjasndkjasndkjasndkjasndkjasndkjnaskjdnaksjdnksakanskd</strong>
+      </p>
+    </td>
+    <td style="width:30%;">
+      <p>
+        <%= subtransaction.answer.answer %> (<%= subtransaction.answer.value %>)</br>
+      </p>
+    </td>
+    <td>
+  </tr>
+  <% end %>
+  
+</table>
 
-<p>
-  <strong>Ruangan:</strong>
-  <%= @transaction.ruangan %>
-</p>
+<hr>
+<table style="width:70%;;margin-right:auto;">
+  <tr>
+    <td style="text-align:left;">
+        <h2>
+        <%= @decision.title %> <small>(<%= @decision.begin_value %> - <%= @decision.end_value %>)</small>
+        </h2>    
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left;">
+      <p>
+        <%= @decision.decision.html_safe %>
+      </p>
+    </td>
+    <td>
+  </tr>
+  
+</table>
 
-<p>
-  <strong>Doctor:</strong>
-  <%= @transaction.doctor %>
-</p>
 
-<p>
-  <strong>Medic record number:</strong>
-  <%= @transaction.medic_record_number %>
-</p>
-
-<p>
-  <strong>Bed number:</strong>
-  <%= @transaction.bed_number %>
-</p>
-
-<p>
-  <strong>Score:</strong>
-  <%= @transaction.score %>
-</p>
-
-<% @subtransactions.each do |subtransaction| %>
-  <%= subtransaction.answer.question.question %>
-  <%= subtransaction.answer.answer %></br>
-<% end %>
-
-<%= @decision.decision %>
 </br>
 

@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def create
     puts params[:level][:level]
     @user = User.new(user_params)
-    @user.level = params[:level][:level]
+    @user.level = params[:level][:level].to_i
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
