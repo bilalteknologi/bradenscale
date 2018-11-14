@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
 
-    @user.level = params[:level][:level]
+    @user.level = params[:level][:level].to_i
     if params[:password].present?
       respond_to do |format|
         if @user.update(user_params)
