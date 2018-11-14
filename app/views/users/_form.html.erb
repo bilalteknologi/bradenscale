@@ -1,3 +1,15 @@
+
+
+<%= render "layouts/nav" %>
+<% if notice!=nil %>
+<div class="column is-12 ">
+    <div class="notification is-warning">
+      <button class="delete"></button>
+      <%= notice %>
+    </div>
+</div>
+<% end %>
+
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -10,30 +22,54 @@
       </ul>
     </div>
   <% end %>
-  
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.email_field :email %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
 
- <div class="field">
-    <%= form.label :password, "Password" %>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= form.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+  <div class="column is-12">
+    <div class="box cta">
 
-  <label>Level</label>
-  <%= select("level","level",options_for_select([["Admin","1"],["User","2"]], :selected => form.object.level)) %> </br>
+      <div class="field">
+        <div class="control">
+          <%= form.email_field :email, class: "input", placeholder: "Email" %>
+        </div>
+      </div>
+      
+      <div class="field">
+        <div class="control">
+          <%= form.text_field :name, class: "input", placeholder: "Name" %>
+        </div>
+      </div>
 
+      <div class="field">
+        <div class="control">
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+          <% end %>
+          <%= form.password_field :password, autofocus: true, autocomplete: "new-password", class: "input", placeholder: "Password" %>
+        </div>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
+      <div class="field">
+        <div class="control">
+          <div class="select is-fullwidth">
+            <%= select("level","level",options_for_select([["Admin","1"],["User","2"]], :selected => form.object.level)) %>
+          </div>
+        </div>
+      </div>
+
+      <footer class="card-footer">
+        <div class="card-footer-item">
+          <div class="columns">
+            <div class="column is-12">
+              <div class="buttons is-center">
+                <%= form.submit :class => "button is-link"%>
+                
+                <%= link_to users_path ,class: "button is-danger" do%>
+                  Back
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   </div>
 <% end %>

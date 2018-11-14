@@ -1,31 +1,60 @@
-<p id="notice"><%= notice %></p>
+<%= render "layouts/nav" %>
 
-<h1>Users</h1>
+<% if notice!=nil %>
+<div class="column is-12 ">
+    <div class="notification is-warning">
+      <button class="delete"></button>
+      <%= notice %>
+    </div>
+</div>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Name</th>
-      <th>Level</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="column is-12 ">
+  <div class="box cta">
+    <div class="columns is-mobile is-centered">
+        <div class="field is-grouped is-grouped-multiline">
+          <div class="control">
+            <%= link_to new_user_path ,class: "button is-link " do%>
+              <span class="icon"><i class="fa fa-plus" aria-hidden="true"></i></span><span></span>New User</a>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %></td>
-        <td><%= user.name %></td>
-        <td><%= user.level %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="column is-12 ">
+  <div class="box cta">
+    <div class="column is-12">
+    <div class="table__wrapper" >
+      <table class="table is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th class="has-text-centered">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          
+          <tr>
+            <td data-link="<%= user_path(user)%>"><%= user.name %></td>
+            <td class="has-text-centered">
+              <%= link_to user, method: :delete, data: { confirm: 'Are you sure?' } ,class: "icon has-text-danger" do%>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      <table>
+      </div>
+    </div>
+  </div>
+</div>
 
-<br>
-
-<%= link_to 'New User', new_user_path %>
+<script>
+$("td[data-link]").click(function() {
+  window.location = $(this).data("link")
+})
+</script>
