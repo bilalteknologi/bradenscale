@@ -1,5 +1,6 @@
 <h1>Report Screening</h1>
 <h4><strong>Score :</strong> <%= @transaction.score %></h4>
+<h5>Screening By: <%= @transaction.useralias.name %></h4>
 <hr>
 
 <table style="width:70%;margin-right:auto;">
@@ -32,7 +33,7 @@
     <td>
       <p>
         <strong>Checkin date:</strong>
-        <%= @transaction.checkin_date %>
+        <%= @transaction.created_at.strftime("%d/%b/%Y %H:%M:%S") %>
       </p>
     </td>
   </tr>
@@ -68,20 +69,13 @@
 
 <hr>
 <h2>Question & Answer</h2>
-<table style="width:500px;margin-right:auto;">
+<table style="width:70%;margin-right:auto;">
   <% @subtransactions.each do |subtransaction| %>
   <tr>
     <td style="width:300px;">
-      <p>
-        <strong><%= subtransaction.answer.question.question %>ajdnkajsndkasndkjasndkjasndkjasndkjasndkjasndkjnaskjdnaksjdnksakanskd</strong>
-      </p>
+        <p style="margin-bottom:15px;"><strong><%= subtransaction.answer.question.question %></strong></p>
+        <li><%= subtransaction.answer.answer %> (<%= subtransaction.answer.value %>)</li>
     </td>
-    <td style="width:200px;">
-      <p>
-        <%= subtransaction.answer.answer %> (<%= subtransaction.answer.value %>)</br>
-      </p>
-    </td>
-    <td>
   </tr>
   <% end %>
   
@@ -94,15 +88,10 @@
         <h2>
         <%= @decision.title %> <small>(<%= @decision.begin_value %> - <%= @decision.end_value %>)</small>
         </h2>    
+        <p>
+          <%= @decision.decision.html_safe %>
+        </p>
     </td>
-  </tr>
-  <tr>
-    <td style="text-align:left;">
-      <p>
-        <%= @decision.decision.html_safe %>
-      </p>
-    </td>
-    <td>
   </tr>
   
 </table>
