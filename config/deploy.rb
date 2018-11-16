@@ -2,20 +2,13 @@
 lock "~> 3.11.0"
 
 set :application, "bradenscale"
-set :repo_url, "https://github.com/bilalteknologi/bradenscale.git"
-
-set :deploy_to, '/home/cahya/bradenscale'
-
-append :linked_files, "config/database.yml", "config/secrets.yml"
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
-
-set :default_env, { path: "~/.rbenv/shims:~/.rbenv/bin:$PATH" }
+set :repo_url, "git@example.com:bilalteknologi/bradenscale.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/my_app_name"
+set :deploy_to, "/home/deploy/bradenscale"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -44,3 +37,6 @@ set :default_env, { path: "~/.rbenv/shims:~/.rbenv/bin:$PATH" }
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+append :linked_files, "config/database.yml", "config/secrets.yml"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
