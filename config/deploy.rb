@@ -4,7 +4,7 @@ lock "~> 3.11.0"
 set :application, "bradenscale"
 set :repo_url, "https://github.com/bilalteknologi/bradenscale.git"
 
-set :deploy_to, '/home/deploy/bradenscale'
+set :deploy_to, '/home/cahya/bradenscale'
 
 append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
