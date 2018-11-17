@@ -26,5 +26,6 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+config/database.yml\nconfig/secrets.yml
 Dockerfile
-docker-compose.yml
+docker-compose.ymlconfig/database.yml\nconfig/secrets.yml
