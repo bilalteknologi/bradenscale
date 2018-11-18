@@ -5,7 +5,7 @@ class DecisionsController < ApplicationController
   # GET /decisions.json
   def index
     @decisions = Decision.all
-    authorize @decisions
+    authorize @decisions  
 
   end
 

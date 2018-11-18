@@ -3,9 +3,9 @@
     <a class="navbar-item">
       <img src="https://lh3.googleusercontent.com/-2MQW9HIaoe8/W5EFXzNdnmI/AAAAAAAAAAo/NwdlS41KA70OkT4Ugc3FbZPLEyJzerTAQCEwYBhgL/w140-h140-p/WhatsApp%2BImage%2B2018-07-30%2Bat%2B00.12.06.jpeg" alt="logo" />
     </a>
-    <a class="navbar-item">
+    <%= link_to transactions_path, class: "navbar-item" do %>
       <h3 class="title has-text-grey">Bilal Teknologi</h3>
-    </a>
+    <% end %>
     
     <div for="menu-toggle" class="navbar-burger burger" style="color: $grey-dark">
       <span></span>
@@ -16,47 +16,103 @@
   <div id="navMenu" class="navbar-menu navbar-end">
   <div class="navbar-item has-dropdown is-hoverable is-hidden-mobile">
       <div class="navbar-link is-arrowless">
-        Nama User
+        <%= current_user.name %>
       </div>
+      
       <div class="navbar-dropdown">
-        <a class="navbar-item">
-          <div>
-            <span class="icon is-small">
-              <i class="fa fa-user" aria-hidden="true"></i>
-            </span>
-            Profile
-          </div>
-        </a>
-        <a class="navbar-item">
-          <div>
-            <span class="icon is-small">
-              <i class="fa fa-bug">  </i>
-            </span>
-            Report Bug
-          </div>
-        </a>
+
+        <% if current_user.admin? %>
+          <%= link_to users_path, class: "navbar-item" do %>
+            <div>
+              <span class="icon is-small">
+                <i class="fa fa-question-circle" aria-hidden="true"></i>
+              </span>
+              <span></span>
+              Questions
+            </div>
+          <% end %>
+
+          <%= link_to users_path, class: "navbar-item" do %>
+            <div>
+              <span class="icon is-small">
+                <i class="fa fa-check-circle">  </i>
+              </span>
+              <span></span>
+              Decisions
+            </div>
+          <% end %>
+
+          <%= link_to users_path, class: "navbar-item" do %>
+            <div>
+              <span class="icon is-small">
+                <i class="fa fa-user-circle-o">  </i>
+              </span>
+              <span></span>
+              Users
+            </div>
+          <% end %>
+        <% end %>
 
         <%= link_to destroy_user_session_path, method: :delete, class: "navbar-item" do %>
           <div>
             <span class="icon is-small">
               <i class="fa fa-sign-out" aria-hidden="true"></i>
             </span>
+            <span></span>
             Sign Out
           </div>
         <% end %>
       </div>
     </div>
 
+
+    <a href="#" class="navbar-item is-hidden-tablet">
+      <div>
+      <%= current_user.name %>
+    </div>
+    </a>
+
+    <% if current_user.admin? %>
+      <%= link_to users_path, class: "navbar-item is-hidden-tablet" do %>
+        <div>
+          <span class="icon">
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+          </span>
+          <span></span>
+          Questions
+        </div>
+      <% end %>
+
+      <%= link_to users_path, class: "navbar-item is-hidden-tablet" do %>
+        <div>
+          <span class="icon">
+            <i class="fa fa-check-circle">  </i>
+          </span>
+          <span></span>
+          Decisions
+        </div>
+      <% end %>
+
+      <%= link_to users_path, class: "navbar-item is-hidden-tablet" do %>
+        <div>
+          <span class="icon">
+            <i class="fa fa-user-circle-o">  </i>
+          </span>
+          <span></span>
+          Users
+        </div>
+      <% end %>
+    <% end %>
+
     <%= link_to destroy_user_session_path, method: :delete, class: "navbar-item is-hidden-tablet" do %>
       <div>
         <span class="icon">
           <i class="fa fa-sign-out" aria-hidden="true"></i>        
         </span>
+        <span></span>
         Sign Out
       </div>
     <% end %>
-
-
 
   </div>
 </nav>

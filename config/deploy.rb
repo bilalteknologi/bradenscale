@@ -2,7 +2,7 @@
 lock "~> 3.11.0"
 
 set :application, "bradenscale"
-set :repo_url, "git@example.com:bilalteknologi/bradenscale.git"
+set :repo_url, "https://github.com/bilalteknologi/bradenscale.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

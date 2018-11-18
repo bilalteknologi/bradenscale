@@ -16,7 +16,7 @@
         <div class="media">
           <div class="media-content">
             <p class="title is-4"><%= @transaction.name %>
-              <% if @transaction.gender=="Laki-Laki" || @transaction.gender=="Pria" %>
+              <% if @transaction.gender=="Male" || @transaction.gender=="Male" %>
                 <span class="icon"><i class="fa fa-mars" aria-hidden="true"></i></span> <%= @transaction.age%> y.o
               <% else %>
                 <span class="icon"><i class="fa fa-venus" aria-hidden="true"></i></span> <%= @transaction.age%> y.o
