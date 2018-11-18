@@ -41,7 +41,6 @@
         <hr>
         <div class="content">
           <span class="subtitle is-4 has-text-link">Question & Answer</span><br>
-            <%= @decision.decision.html_safe %>
             <% @subtransactions.each do |subtransaction| %>
               <%= subtransaction.answer.question.question %><span class="icon"><i class="fa fa-question-circle-o" aria-hidden="true"></i></span> <br>
                 <li><%= subtransaction.answer.answer %> (<%= subtransaction.answer.value %>)</li>
