@@ -44,7 +44,7 @@
         <div class="content">
           <% @decision = Decision.where(["begin_value <= ?",transaction.score]).where(["end_value >= ?", transaction.score]).first %>
           <span class="subtitle is-4 has-text-link"><%= @decision.title %></span><br>
-            <%= truncate_markup @decision.decision, length: 200 %>
+            <%= truncate @decision.decision, commisiion: "", length: 200, escape: false %>
           <br>
           <span class="icon"><i class="fa fa-user-md" aria-hidden="true"></i></span><%= transaction.doctor %>
         </div>
