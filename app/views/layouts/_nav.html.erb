@@ -73,7 +73,7 @@
     </a>
 
     <% if current_user.admin? %>
-      <%= link_to users_path, class: "navbar-item is-hidden-tablet" do %>
+      <%= link_to questions_path, class: "navbar-item is-hidden-tablet" do %>
         <div>
           <span class="icon">
             <i class="fa fa-question-circle" aria-hidden="true"></i>
@@ -83,7 +83,7 @@
         </div>
       <% end %>
 
-      <%= link_to users_path, class: "navbar-item is-hidden-tablet" do %>
+      <%= link_to decisions_path, class: "navbar-item is-hidden-tablet" do %>
         <div>
           <span class="icon">
             <i class="fa fa-check-circle">  </i>
