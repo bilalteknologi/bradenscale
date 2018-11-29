@@ -47,6 +47,10 @@
             <%= truncate @decision.decision, commisiion: "", length: 200, escape: false %>
           <br>
           <span class="icon"><i class="fa fa-user-md" aria-hidden="true"></i></span><%= transaction.doctor %>
+          <br/>
+          <% if current_user.admin? %>
+            <span class="icon"><i class="fa fa-user-circle" aria-hidden="true"></i></span><%= transaction.useralias.name %>
+          <% end %>
         </div>
       </div>
 
