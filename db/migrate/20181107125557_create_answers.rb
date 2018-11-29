@@ -6,6 +6,11 @@ class CreateAnswers < ActiveRecord::Migration[5.2]
       t.integer :question_id
 
       t.timestamps
+
     end
+    change_column :answers, :question_id, :bigint
+
+    add_foreign_key :answers, :questions, on_delete: :cascade
+
   end
 end

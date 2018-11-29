@@ -15,9 +15,10 @@ ActiveRecord::Schema.define(version: 2018_11_11_151313) do
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "answer", limit: 4294967295
     t.integer "value"
-    t.integer "question_id"
+    t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "fk_rails_3d5ed4418f"
   end
 
   create_table "decisions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -36,10 +37,12 @@ ActiveRecord::Schema.define(version: 2018_11_11_151313) do
   end
 
   create_table "subtransactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "answer_id"
-    t.integer "transaction_id"
+    t.bigint "answer_id"
+    t.bigint "transaction_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "fk_rails_af1e1bbd89"
+    t.index ["transaction_id"], name: "fk_rails_2827b07b7c"
   end
 
   create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -54,7 +57,8 @@ ActiveRecord::Schema.define(version: 2018_11_11_151313) do
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "fk_rails_77364e6416"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -71,4 +75,8 @@ ActiveRecord::Schema.define(version: 2018_11_11_151313) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "questions", on_delete: :cascade
+  add_foreign_key "subtransactions", "answers", on_delete: :cascade
+  add_foreign_key "subtransactions", "transactions", on_delete: :cascade
+  add_foreign_key "transactions", "users", on_delete: :cascade
 end
