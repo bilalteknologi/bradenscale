@@ -32,7 +32,7 @@
       
       <div class="field">
         <div class="control">
-          <%= form.text_field :name, class: "input", placeholder: "Name" %>
+          <%= form.text_field :name, class: "input", placeholder: "Nama" %>
         </div>
       </div>
 
@@ -58,10 +58,10 @@
           <div class="columns">
             <div class="column is-12">
               <div class="buttons is-center">
-                <%= form.submit :class => "button is-link"%>
+                <%= form.submit "Ubah Pengguna" , :class => "button is-link"%>
                 
                 <%= link_to users_path ,class: "button is-danger" do%>
-                  Back
+                  Kembali
                 <% end %>
               </div>
             </div>

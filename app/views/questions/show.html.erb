@@ -37,17 +37,17 @@
       <div class="column is-12">
         <div class="field">
           <div class="control">
-            <%= form.text_field :answer, class: "input", placeholder: "Answer" %>
+            <%= form.text_field :answer, class: "input", placeholder: "Jawaban" %>
           </div>
         </div>
 
         <div class="field">
           <div class="control">
-            <%= form.number_field :value, class: "input", placeholder: "Value" %>
+            <%= form.number_field :value, class: "input", placeholder: "Bobot" %>
           </div>
         </div>
 
-        <%= form.submit :class => "button is-link is-fullwidth"%>
+        <%= form.submit "Tambah Jawaban", :class => "button is-link is-fullwidth"%>
       </div>
     </div>
 
@@ -59,9 +59,9 @@
           <table class="table is-narrow is-hoverable is-fullwidth">
             <thead>
               <tr>
-                <th>Answer</th>
-                <th class="has-text-centered">Val</th>
-                <th class="has-text-centered">Action</th>
+                <th>Jawaban</th>
+                <th class="has-text-centered">Bobot</th>
+                <th class="has-text-centered">Aksi</th>
               </tr>
             </thead>
             <tbody>
@@ -70,7 +70,7 @@
                 <td data-link="<%= edit_question_answer_path(@question,answer)%>"><%= answer.answer %></td>
                 <td data-link="<%= edit_question_answer_path(@question,answer)%>" class="has-text-centered"><%= answer.value %></td>
                 <td class="has-text-centered">
-                  <%= link_to question_answer_path(@question,answer), method: :delete, data: { confirm: 'Are you sure?' } ,class: "icon has-text-danger" do%>
+                  <%= link_to question_answer_path(@question,answer), method: :delete, data: { confirm: 'Anda yakin?' } ,class: "icon has-text-danger" do%>
                     <i class="fa fa-trash" aria-hidden="true"></i>
                   <% end %>
                 </td>
@@ -88,11 +88,11 @@
             <div class="column is-12">
               <div class="buttons is-center">                
                 <%= link_to edit_question_path(@question), class: "button is-link" do%>
-                  Edit Question
+                  Ubah Pertanyaan
                 <% end %>
                 
                 <%= link_to questions_path ,class: "button is-danger" do%>
-                  Back
+                  Kembali
                 <% end %>
               </div>
             </div>

@@ -40,7 +40,7 @@
         </div>
         <hr>
         <div class="content">
-          <span class="subtitle is-4 has-text-link">Question & Answer</span><br>
+          <span class="subtitle is-4 has-text-link">Pertanyaan dan Jawaban</span><br>
             <% @subtransactions.each do |subtransaction| %>
               <%= subtransaction.answer.question.question %><span class="icon"><i class="fa fa-question-circle-o" aria-hidden="true"></i></span> <br>
                 <li><%= subtransaction.answer.answer %> (<%= subtransaction.answer.value %>)</li>
@@ -55,11 +55,11 @@
           <div class="columns">
             <div class="column is-12">
               <div class="buttons is-left">
-                <%= link_to 'Back', transactions_path, class: "button is-link" %>
+                <%= link_to 'Kembali', transactions_path, class: "button is-link" %>
                 <%= link_to export_pdf_transaction_path(@transaction, :format => :pdf), class: "button is-danger" do %>
-                  <span class="icon"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span><span></span> Export
+                  <span class="icon"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span><span></span> Ekspor
                 <% end %>
-                <%= link_to 'Destroy', @transaction, method: :delete,class: "button is-warning", data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Hapus', @transaction, method: :delete,class: "button is-warning", data: { confirm: 'Anda yakin?' } %>
               </div>
             </div>
             

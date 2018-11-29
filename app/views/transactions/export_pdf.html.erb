@@ -1,6 +1,6 @@
-<h1>Report Screening</h1>
-<h4><strong>Score :</strong> <%= @transaction.score %></h4>
-<h5>Screening By: <%= @transaction.useralias.name %></h4>
+<h1>Laporan Screening</h1>
+<h4><strong>Skor :</strong> <%= @transaction.score %></h4>
+<h5>Di Lakukan Oleh: <%= @transaction.useralias.name %></h4>
 <hr>
 
 <table style="width:70%;margin-right:auto;">
@@ -11,13 +11,13 @@
   <tr>
     <td>
       <p>
-        <strong>Name:</strong>
+        <strong>Nama:</strong>
         <%= @transaction.name %>
       </p>
     </td>
     <td>
       <p>
-        <strong>Age:</strong>
+        <strong>Umur:</strong>
         <%= @transaction.age %>
       </p>
     </td>
@@ -26,13 +26,13 @@
   <tr>
     <td>
       <p>
-        <strong>Gender:</strong>
+        <strong>Jenis Kelamin:</strong>
         <%= @transaction.gender %>
       </p>
     </td>
     <td>
       <p>
-        <strong>Checkin date:</strong>
+        <strong>Tanggal Masuk:</strong>
         <%= @transaction.created_at.strftime("%d/%b/%Y %H:%M:%S") %>
       </p>
     </td>
@@ -40,13 +40,13 @@
   <tr>
     <td>
       <p>
-        <strong>Room:</strong>
+        <strong>Ruangan:</strong>
         <%= @transaction.ruangan %>
       </p>
     </td>
     <td>
       <p>
-        <strong>Doctor:</strong>
+        <strong>Dokter:</strong>
         <%= @transaction.doctor %>
       </p>
     </td>
@@ -54,13 +54,13 @@
   <tr>
     <td>
       <p>
-        <strong>Medic record number:</strong>
+        <strong>Nomor Rekam Medik:</strong>
         <%= @transaction.medic_record_number %>
       </p>
     </td>
     <td>
       <p>
-        <strong>Bed number:</strong>
+        <strong>Nomor Kasur:</strong>
         <%= @transaction.bed_number %>
       </p>
     </td>
@@ -68,7 +68,7 @@
 </table>
 
 <hr>
-<h2>Question & Answer</h2>
+<h2>Pertanyaan dan Jawaban</h2>
 <table style="width:70%;margin-right:auto;">
   <% @subtransactions.each do |subtransaction| %>
   <tr>

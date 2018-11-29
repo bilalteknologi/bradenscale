@@ -31,7 +31,7 @@
         <div class="media">
           <div class="media-content">
             <p class="title is-4"><%= transaction.name %>
-              <% if transaction.gender=="Male" || transaction.gender=="Male" %>
+              <% if transaction.gender=="Laki-Laki" || transaction.gender=="Laki-Laki" %>
                 <span class="icon"><i class="fa fa-mars" aria-hidden="true"></i></span> <small><%= transaction.age%> y.o</small>
               <% else %>
                 <span class="icon"><i class="fa fa-venus" aria-hidden="true"></i></span> <small><%= transaction.age%> y.o</small>
@@ -57,14 +57,14 @@
               <div class="buttons is-left">
                 <% if policy(transaction).export_pdf? %>
                   <%= link_to export_pdf_transaction_path( transaction, :format => :pdf), class: "button is-danger" do %>
-                    <span class="icon"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span><span></span> Export
+                    <span class="icon"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span><span></span> Ekspor
                   <% end %>
                 <% end %>
                 <% if policy(transaction).destroy? %>
-                  <%= link_to 'Destroy', transaction, method: :delete,class: "button is-warning", data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Hapus', transaction, method: :delete,class: "button is-warning", data: { confirm: 'Are you sure?' } %>
                 <% end %>
                 <% if policy(transaction).show? %>
-                  <%= link_to 'Show', transaction,class: "button is-primary" %>
+                  <%= link_to 'Lihat', transaction,class: "button is-primary" %>
 
                 <% end %>
               </div>
@@ -80,8 +80,8 @@
 
   <%= will_paginate @posts, renderer: BulmaPagination::Rails,
       :class => 'pagination is-centered is-rounded',
-      :previous_label => 'Previous',
-      :next_label => 'Next page' %>
+      :previous_label => 'Sebelumnya',
+      :next_label => 'Selanjutnya' %>
 
 </div>
 

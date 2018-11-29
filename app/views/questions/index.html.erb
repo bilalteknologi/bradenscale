@@ -43,15 +43,15 @@
             <div class="column is-12">
               <div class="buttons is-center">
                 <%= link_to question, class: "button is-success " do %>
-                  Answer
+                  Jawaban
                 <% end %>
                 
                 <%= link_to edit_question_path(question), class: "button is-link " do %>
-                  Edit
+                  Ubah
                 <% end %>
                 
-                <%= link_to question, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" do %>
-                  Delete
+                <%= link_to question, method: :delete, data: { confirm: 'Anda yakin?' }, class: "button is-danger" do %>
+                  Hapus
                 <% end %>
               </div>
             </div>

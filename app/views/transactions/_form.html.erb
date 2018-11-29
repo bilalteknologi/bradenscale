@@ -25,19 +25,19 @@
     <div class="box cta">
       <div class="field">
         <div class="control">
-          <%= form.text_field :name, class: "input", placeholder: "Name" %>
+          <%= form.text_field :name, class: "input", placeholder: "Nama" %>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-          <%= form.number_field :age, class: "input", placeholder: "Age" %>
+          <%= form.number_field :age, class: "input", placeholder: "Umur" %>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-            <%= form.label :checkin_date %>
+            <label>Tanggal Masuk</label>
             <%= form.date_select :checkin_date, start_year: 1945, :order => [:day, :month, :year], class:"select" %>
         </div>
       </div>
@@ -45,32 +45,32 @@
       <div class="field">
         <div class="control">
           <div class="select is-fullwidth">
-            <%= select("gender","gender",options_for_select([["Male","Male"],["Female","Female"]], :selected => form.object.gender)) %> </br>
+            <%= select("gender","gender",options_for_select([["Laki-Laki","Laki-Laki"],["Perempuan","Perempuan"]], :selected => form.object.gender)) %> </br>
           </div>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-          <%= form.text_field :ruangan, class: "input", placeholder: "Room" %>
+          <%= form.text_field :ruangan, class: "input", placeholder: "Ruangan" %>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-          <%= form.text_field :doctor, class: "input", placeholder: "Docktor" %>
+          <%= form.text_field :doctor, class: "input", placeholder: "Dokter" %>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-          <%= form.text_field :medic_record_number, class: "input", placeholder: "Medic Record Number" %>
+          <%= form.text_field :medic_record_number, class: "input", placeholder: "Nomor Rekam Medik" %>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-          <%= form.text_field :bed_number, class: "input", placeholder: "Bed Number" %>
+          <%= form.text_field :bed_number, class: "input", placeholder: "Nomor Kasur" %>
         </div>
       </div>
       
@@ -91,7 +91,7 @@
             <div class="column is-12">
               <div class="buttons is-left">
                 <%= link_to transactions_path ,class: "button is-danger" do%>
-                    <span class="icon"><i class="fa fa-caret-left" aria-hidden="true"></i></span><span></span>Back</a>
+                    <span class="icon"><i class="fa fa-caret-left" aria-hidden="true"></i></span><span></span>Kembali</a>
                 <% end %>
                 <%= form.submit :class => "button is-link"%>
               </div>
