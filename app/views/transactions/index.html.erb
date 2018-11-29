@@ -32,9 +32,9 @@
           <div class="media-content">
             <p class="title is-4"><%= transaction.name %>
               <% if transaction.gender=="Laki-Laki" || transaction.gender=="Laki-Laki" %>
-                <span class="icon"><i class="fa fa-mars" aria-hidden="true"></i></span> <small><%= transaction.age%> y.o</small>
+                <span class="icon"><i class="fa fa-mars" aria-hidden="true"></i></span> <small><%= transaction.age%> Tahun</small>
               <% else %>
-                <span class="icon"><i class="fa fa-venus" aria-hidden="true"></i></span> <small><%= transaction.age%> y.o</small>
+                <span class="icon"><i class="fa fa-venus" aria-hidden="true"></i></span> <small><%= transaction.age%> Tahun</small>
               <% end %>
             </p>
             <p class="subtitle is-6"><span class="icon"><i class="fa fa-file-o" aria-hidden="true"></i></span><%= transaction.medic_record_number %> / <span class="icon"><i class="fa fa-sign-in" aria-hidden="true"></i></span> <%= transaction.ruangan %> / <span class="icon"><i class="fa fa-bed" aria-hidden="true"></i></span> <%= transaction.bed_number %><br> <span class="icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span><%= transaction.created_at.strftime("%H:%M:%S") %><span class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></span><%= transaction.created_at.strftime("%d/%b/%Y") %></p>
