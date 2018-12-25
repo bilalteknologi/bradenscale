@@ -4,11 +4,25 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    if current_user.admin?
-      @transactions = Transaction.all.paginate(:page => params[:page], :per_page => 15)
+
+    if params[:search]
+      puts params[:search]
+      if current_user.admin?
+        @transactions = Transaction.left_outer_joins(:useralias).where('users.name like ? or transactions.name like ?',"%#{params[:search]}%","%#{params[:search]}%")
+      else
+        @transactions = Transaction.left_outer_joins(:useralias).where(user_id: current_user.id).where('users.name like ? or transactions.name like ?',"%#{params[:search]}%","%#{params[:search]}%")
+      end
     else
-      @transactions = Transaction.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 15)
+      if current_user.admin?
+        @transactions = Transaction.all
+      else
+        @transactions = Transaction.where(user_id: current_user.id)
+      end
     end
+
+    @search=params[:search]
+
+    @transactions= @transactions.paginate(:page => params[:page], :per_page => 15)
     authorize @transactions
 
   end
@@ -22,6 +36,41 @@ class TransactionsController < ApplicationController
     authorize @transaction
 
 
+  end
+
+  def export_pdf_by_search
+    
+
+
+    if params[:search]
+      puts params[:search]
+      if current_user.admin?
+        @transactions = Transaction.left_outer_joins(:useralias).where('users.name like ? or transactions.name like ?',"%#{params[:search]}%","%#{params[:search]}%")
+      else
+        @transactions = Transaction.left_outer_joins(:useralias).where(user_id: current_user.id).where('users.name like ? or transactions.name like ?',"%#{params[:search]}%","%#{params[:search]}%")
+      end
+    else
+      if current_user.admin?
+        @transactions = Transaction.all
+      else
+        @transactions = Transaction.where(user_id: current_user.id)
+      end
+    end
+
+
+
+
+    # @subtransactions = Subtransaction.where(transaction_id: params[:id])
+
+    
+    respond_to do |format|
+      format.pdf do
+        render pdf: "tes",
+        template: "transactions/export_pdf_by_search.html.erb",
+        layout: 'layouts/pdf.html',
+        locals: { transaction: @transactions }
+      end
+    end
   end
 
   def export_pdf
@@ -39,6 +88,10 @@ class TransactionsController < ApplicationController
       end
     end
   end
+
+  def page_doughnut
+  end
+
 
   # GET /transactions/new
   def new
@@ -123,4 +176,6 @@ class TransactionsController < ApplicationController
 
       params.require(:transaction).permit(:name, :age, :checkin_date, :ruangan, :doctor, :medic_record_number, :bed_number)
     end
+
+
 end

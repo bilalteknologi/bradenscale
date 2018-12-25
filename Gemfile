@@ -37,6 +37,7 @@ gem "ckeditor"
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bulma'
 
+
 group :development do
 	gem 'capistrano', '~> 3.11'
 	gem 'capistrano-rails', '~> 1.4'

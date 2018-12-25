@@ -12,8 +12,9 @@
 <div class="column is-12">
   <div class="level-right is-hidden-touch">
     <div class="level-item field has-addons">
+    <%= form_tag root_path, method: :get do %>
       <div class="control">
-        <input class="input" type="text" placeholder="Cari">
+        <%= text_field_tag :search, nil, placeholder: 'Cari berdasarkan pengguna', class: 'input' %>
       </div>
       <div class="control">
         <a class="button is-info">
@@ -25,12 +26,29 @@
         <i class="fa fa-print" aria-hidden="true"></i>
         </a>
       </div>
+    <% end %>
     </div>
   </div>
   <br>
   <div class= "columns is-mobile is-centered is-hidden-tablet">
     <div class="field has-addons">
-      <div class="control">
+      <%= form_tag root_path, method: :get do %>
+        <div class="control">
+          <%= text_field_tag :search, @search, placeholder: 'Cari Pengguna/Pasien', class: 'input' %>
+        </div>
+        <div class="control">
+          <%= submit_tag ("Cari"), class: 'button is-info' %>
+        </div>
+
+        <div class="control">
+          <%= link_to export_pdf_by_search_path( @search, :search => @search, :format => :pdf), class: "button is-danger" do %>
+            <span class="icon"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></span><span></span> Ekspor
+          <% end %>
+        </div>
+
+
+      <% end %>
+      <%# <div class="control">
         <input class="input" type="text" placeholder="Cari">
       </div>
       <div class="control">
@@ -42,7 +60,7 @@
         <a class="button is-danger">
         <i class="fa fa-print" aria-hidden="true"></i>
         </a>
-      </div>
+      </div> %>
     </div>
   </div>
 </div>

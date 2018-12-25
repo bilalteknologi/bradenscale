@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       get :export_pdf, :as => 'export_pdf'
     end
   end
+
+  get 'export' => 'transactions#export_pdf_by_search', :as => :export_pdf_by_search
+
   # resources :questions
   # resources :answers
   devise_for :users, :skip => [:registrations, :recoverable]
