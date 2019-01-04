@@ -1,7 +1,7 @@
 class Transaction < ApplicationRecord
     has_many :subtransaction
     belongs_to :useralias, foreign_key: "user_id", class_name: "User"
-
+    belongs_to :decision, foreign_key: "decision_id", class_name: "Decision"
 
     validates :age, numericality: { only_integer: true }
     validates :name, presence: true

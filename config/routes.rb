@@ -2,6 +2,13 @@ Rails.application.routes.draw do
   
   resources :decisions
 
+  namespace :charts do
+    get "decisions_chart_by_day"
+    get "decisions_chart_by_month"
+  end
+
+  get 'grafik' => 'charts#index', :as => :index
+
   resources :transactions, only: [:create,:new,:destroy,:show,:index] do
     member do
       get :export_pdf, :as => 'export_pdf'

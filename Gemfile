@@ -36,7 +36,8 @@ gem 'pundit'
 gem "ckeditor"
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bulma'
-
+gem 'chartkick'
+gem 'groupdate'
 
 group :development do
 	gem 'capistrano', '~> 3.11'

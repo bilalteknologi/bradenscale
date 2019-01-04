@@ -89,9 +89,6 @@ class TransactionsController < ApplicationController
     end
   end
 
-  def page_doughnut
-  end
-
 
   # GET /transactions/new
   def new
@@ -112,10 +109,14 @@ class TransactionsController < ApplicationController
   def create
     # @transaction = Transaction.new(transaction_params)
     @answer = Answer.where(id: params[:answer_id])
+
+    @decision = Decision.where(["begin_value <= ?",@answer.sum(:value)]).where(["end_value >= ?", @answer.sum(:value)]).first
+
     @transaction = Transaction.new(custom_transaction_params)
     @transaction.score = @answer.sum(:value)
     @transaction.user_id = current_user.id
     @transaction.gender = params[:gender][:gender]
+    @transaction.decision= @decision
 
     respond_to do |format|
       if @transaction.save

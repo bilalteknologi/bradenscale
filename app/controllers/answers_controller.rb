@@ -35,6 +35,7 @@ class AnswersController < ApplicationController
     puts @answer.errors.messages
 
     # redirect_to question_path(), notice: 'Answer was successfully created.'
+    # redirect_to question_path(), notice: 'Answer was successfully created.'
 
     
 

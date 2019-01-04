@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_11_151313) do
+ActiveRecord::Schema.define(version: 2018_12_25_150143) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "answer", limit: 4294967295
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2018_11_11_151313) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "decision_id"
+    t.index ["decision_id"], name: "fk_rails_b0642d86dd"
     t.index ["user_id"], name: "fk_rails_77364e6416"
   end
 
@@ -78,5 +80,6 @@ ActiveRecord::Schema.define(version: 2018_11_11_151313) do
   add_foreign_key "answers", "questions", on_delete: :cascade
   add_foreign_key "subtransactions", "answers", on_delete: :cascade
   add_foreign_key "subtransactions", "transactions", on_delete: :cascade
+  add_foreign_key "transactions", "decisions", on_delete: :cascade
   add_foreign_key "transactions", "users", on_delete: :cascade
 end
