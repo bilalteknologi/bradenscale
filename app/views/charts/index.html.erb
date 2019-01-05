@@ -1,10 +1,49 @@
-<h1>Charts#decisions_chart</h1>
-<input type="text" id="start_day_at"></input>
-<input type="text" id="end_day_at"></input>
-<%= area_chart charts_decisions_chart_by_day_path %>
-<input type="text" id="start_month_at"></input>
-<input type="text" id="end_month_at"></input>
-<%= area_chart charts_decisions_chart_by_month_path %>
+<%= render "layouts/nav" %>
+
+
+<div class="column is-12 ">
+  <div class="box cta">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <div class="control">
+            <input class="input" type="text" placeholder="Dari Hari Ke" id="start_day_at">
+          </div>
+        </div>
+      </div>
+      <div class="level-right">
+        <div class="level-item">
+          <div class="control">
+            <input class="input" type="text" placeholder="Sampai Hari Ke" id="end_day_at">
+          </div>
+        </div>
+      </div>
+    </nav>
+    <%= area_chart charts_decisions_chart_by_day_path %>
+  </div>
+</div>
+
+<div class="column is-12 ">
+  <div class="box cta">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <div class="control">
+            <input class="input" type="text" placeholder="Dari Bulan Ke" id="start_month_at">
+          </div>
+        </div>
+      </div>
+      <div class="level-right">
+        <div class="level-item">
+          <div class="control">
+            <input class="input" type="text" placeholder="Sampai Bulan Ke" id="end_month_at">
+          </div>
+        </div>
+      </div>
+    </nav>
+    <%= area_chart charts_decisions_chart_by_month_path %>
+  </div>
+</div>
 
 <script type="text/javascript">
 $("#end_month_at").change(function(e){
@@ -20,7 +59,7 @@ $("#end_month_at").change(function(e){
         },
         success: function (data) {
           //reload akan datanya
-          //$("#chart-2").html(data);
+          $("#chart-2").html(data);
         },
       });    
 });
@@ -38,7 +77,7 @@ $("#end_day_at").change(function(e){
         },
         success: function (data) {
           //reload akan datanya
-          //$("#chart-2").html(data);
+          $("#chart-2").html(data);
         },
       });    
 });
