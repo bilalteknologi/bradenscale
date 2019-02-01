@@ -25,7 +25,7 @@ class ChartsController < ApplicationController
   end
   
   def decisions_chart_by_month
-    if (params[:start_at].nil? || params[:end_at])
+    if (params[:start_at].nil? || params[:end_at].nil?)
       @transaction = Transaction.left_outer_joins(:decision).group(:title).group_by_month(:created_at).count.chart_json
     else
       start_at = params[:start_at].to_date
