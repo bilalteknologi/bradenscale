@@ -11,11 +11,13 @@ class ChartsController < ApplicationController
       start_at = params[:start_at].to_date
       end_at = params[:end_at].to_date
 
-      @transaction = Transaction.left_outer_joins(:decision).group(:title).group_by_day(:created_at, last: 7, range: start_at..end_at).count.chart_json
+      @transaction = Transaction.left_outer_joins(:decision).group(:title).group_by_day(:created_at, range: start_at..end_at).count.chart_json
     end
     puts '===='
 
     puts @transaction
+    puts start_at
+    puts end_at
     
     render json: @transaction
 
