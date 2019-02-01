@@ -48,6 +48,7 @@
 <script type="text/javascript">
 
 var chartday= Chartkick.charts["chart-1"];
+var chartmonth= Chartkick.charts["chart-2"];
 
 
 $("#end_month_at").change(function(e){
@@ -64,6 +65,7 @@ $("#end_month_at").change(function(e){
         success: function (data) {
           //reload akan datanya
           //$("#chart-2").html(data);
+          chartmonth.updateData(data);
           
         },
       });    
