@@ -5,7 +5,7 @@ class ChartsController < ApplicationController
   end
 
   def decisions_chart_by_day
-    if (params[:start_at].nil? || params[:end_at])
+    if (params[:start_at].nil? || params[:end_at].nil?)
       @transaction = Transaction.left_outer_joins(:decision).group(:title).group_by_day(:created_at, last: 7).count.chart_json
     else
       start_at = params[:start_at].to_date
