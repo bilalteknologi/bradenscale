@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
+# ruby '2.4.5'
 
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
