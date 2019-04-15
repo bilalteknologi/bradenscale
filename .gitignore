@@ -31,3 +31,4 @@ config/secrets.yml
 
 Dockerfile
 docker-compose.ymlconfig/database.yml\nconfig/secrets.yml
+/.DS_store
