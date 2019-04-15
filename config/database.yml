@@ -52,7 +52,7 @@ production:
   host: 127.0.0.1
   database: bradenscale_production
   username: deploy
-  password: bilalteknologi
+  password: Bilalteknologi123@
   encoding: utf8
   pool: 5
   
